@@ -15,35 +15,53 @@ const UserSchema = new Schema({
         unique: true,
         index: true
     },
+
     password: {
         type: String,
         required: true,
         unique: true,
-        set:(password) => passwordValidation(password)
+        set:(password) => passwordValidation(password) //! password validation and encrypt
         
     },
+
     email: {
         type: String,
         required: true,
         unique: true,
-       set: (email) => emailValidation(email)
+       set: (email) => emailValidation(email) //! email validation
     },
-    username: {
+
+    firstName: {
         type: String,
-        required: true,
-        unique: true,
-        index: true
+        required: true
     },
-    username: {
+
+    lastName: {
         type: String,
-        required: true,
-        unique: true,
-        index: true
+        required: true
     },
+
+    isActive: {
+        type: Boolean,
+        default: true
+    },
+
+    isStaff: {
+        type: Boolean,
+        default: false
+    },
+
+    isAdmin: {
+        type: Boolean,
+        default: false
+    },
+  
 }, {
     collection: "users",
     timestamps: true
 })
+
+module.exports = model("User", UserSchema)
 
 // UserSchema.pre(['save', 'updateOne'], function (next) {
 
