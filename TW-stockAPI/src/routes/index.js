@@ -6,12 +6,13 @@ const router = require('express').Router()
 /* ------------------------------------------------------- */
 // routes/:
 
+
 // URL: /
 
 // // auth:
 // router.use('/auth', require('./auth'))
 // // user:
-// router.use('/users', require('./user'))
+router.use('/users', require('./user'))
 // // token:
 // router.use('/tokens', require('./token'))
 
