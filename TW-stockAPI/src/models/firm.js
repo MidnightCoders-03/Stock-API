@@ -4,62 +4,47 @@
 ------------------------------------------------------- */
 const { mongoose:{ Schema, model} } = require('../configs/dbConnection')
 /* ------------------------------------------------------- */
-const passwordValidation = require("../helpers/passwordValidation")
-const emailValidation = require("../helpers/emailValidation")
 
-const UserSchema = new Schema({
+const { firmStatus } = require("../constraints/role&status")
 
-    username: {
+const FirmSchema = new Schema({
+
+    name: {
         type: String,
         required: true,
-        unique: true,
         index: true
     },
 
-    password: {
+    phone: {
+        type: String,
+        required: true,
+        unique: true,        
+    },
+
+    address: {
         type: String,
         required: true,
         unique: true,
-        set:(password) => passwordValidation(password) //! password validation and encrypt
-        
     },
 
-    email: {
+    image: {
         type: String,
-        required: true,
-        unique: true,
-       set: (email) => emailValidation(email) //! email validation
     },
 
-    firstName: {
-        type: String,
-        required: true
+    status: {
+       type: String,
+       trim: true,
+       required: true,
+       enum: {
+        values:Object.keys(firmStatus), 
+        message:"Please enter a valid status"
     },
-
-    lastName: {
-        type: String,
-        required: true
-    },
-
-    isActive: {
-        type: Boolean,
-        default: true
-    },
-
-    isStaff: {
-        type: Boolean,
-        default: true
-    },
-
-    isAdmin: {
-        type: Boolean,
-        default: false
-    },
-  
+       default: Object.keys(firmStatus)[0]
+    }
 }, {
-    collection: "users",
+    collection: "firms",
     timestamps: true
 })
 
-module.exports = model("User", UserSchema)
+module.exports = model("Firm", FirmSchema)
 
