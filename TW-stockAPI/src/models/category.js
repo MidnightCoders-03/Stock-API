@@ -11,7 +11,8 @@ const CategorySchema = new Schema({
         type: String,
         trim: true,
         required: true,
-        index: true
+        index: true,
+        set:(name) => name.toUpperCase()
     }
 }, {
     collection:"categories",

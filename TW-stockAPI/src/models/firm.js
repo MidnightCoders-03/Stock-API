@@ -35,7 +35,10 @@ const FirmSchema = new Schema({
        type: String,
        trim: true,
        required: true,
-       enum: Object.keys(firmStatus),
+       enum: {
+        values:Object.keys(firmStatus), 
+        message:"Please enter a valid status"
+    },
        default: Object.keys(firmStatus)[0]
     }
 }, {
