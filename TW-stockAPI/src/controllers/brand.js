@@ -10,7 +10,7 @@ module.exports = {
     list: async (req, res) => {
       
         const data = await Brand.find()
-
+console.log(req.headers);
         res.status(200).send({
             error: false,
             data
