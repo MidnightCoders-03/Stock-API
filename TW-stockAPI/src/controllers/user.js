@@ -1,4 +1,5 @@
 "use strict"
+const { firmStatus } = require("../constraints/role&status")
 /* -------------------------------------------------------
     NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- */
@@ -8,6 +9,9 @@ module.exports = {
 
     list: async (req, res) => {
         
+
+console.log(Object.keys(firmStatus));
+
         const data = await User.find()
 
         res.status(200).send({
