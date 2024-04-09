@@ -1,7 +1,7 @@
 "use strict"
 const quantityCalculation = require("../helpers/quantityCalculation")
 /* -------------------------------------------------------
-    NODEJS EXPRESS | CLARUSWAY FullStack Team
+NODEJS EXPRESS | MidnightCoders Team
 ------------------------------------------------------- */
 
 const Product = require("../models/product")

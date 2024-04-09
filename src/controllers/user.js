@@ -1,7 +1,7 @@
 "use strict"
 const { firmStatus } = require("../constraints/role&status")
 /* -------------------------------------------------------
-    NODEJS EXPRESS | CLARUSWAY FullStack Team
+NODEJS EXPRESS | MidnightCoders Team
 ------------------------------------------------------- */
 const User = require("../models/user")
 

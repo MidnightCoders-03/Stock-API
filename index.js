@@ -1,6 +1,6 @@
 "use strict"
 /* -------------------------------------------------------
-    NODEJS EXPRESS | CLARUSWAY FullStack Team
+NODEJS EXPRESS | MidnightCoders Team
 ------------------------------------------------------- */
 const express = require('express')
 const app = express()
