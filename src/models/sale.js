@@ -3,7 +3,6 @@
 NODEJS EXPRESS | MidnightCoders Team
 ------------------------------------------------------- */
 const { mongoose: { Schema, model} } = require('../configs/dbConnection')
-const saleQuantityCalculation = require('../helpers/saleQuantityCalculation')
 /* ------------------------------------------------------- */
 
 const SaleSchema = new Schema({
@@ -37,8 +36,8 @@ const SaleSchema = new Schema({
 
     priceTotal: {
         type: Number,
-        default:function() {return this.price * this.quantity},
-        transform: function() { return this.price * this.quantity }
+        default:function() {return this.price * this.quantity}, 
+        transform: function() { return this.price * this.quantity } //! to update the total price
     }
 }, {
     collection: "sales",

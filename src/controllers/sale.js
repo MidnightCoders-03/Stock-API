@@ -4,7 +4,6 @@ NODEJS EXPRESS | MidnightCoders Team
 ------------------------------------------------------- */
 const Product = require("../models/product")
 const Sale = require("../models/sale");
-const saleQuantityCalculation = require("../helpers/saleQuantityCalculation");
 
 module.exports = {
   list: async (req, res) => {
@@ -31,6 +30,7 @@ module.exports = {
     }
     console.log(req.user);
     req.body.userId = req.user._id
+    req.body.brandId = product.brandId
     const data = await Sale.create(req.body);
      await Product.updateOne(
       {_id: req.body.productId},
