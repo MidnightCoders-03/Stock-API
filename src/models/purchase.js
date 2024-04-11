@@ -43,7 +43,7 @@ const PurchaseSchema = new Schema({
 
     priceTotal: {
        type: Number,
-       set: function() { return this.quantity * this.price},
+       default: function() { return this.quantity * this.price},
        transform: function() { return this.quantity * this.price }
     }
 
