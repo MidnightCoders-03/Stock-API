@@ -10,7 +10,7 @@ module.exports = async (name, category, brand, quantity) => {
 
     if(!product){
 
-      return  product = await Product.create({name,quantity, brand, category})
+      return  product = await Product.create({name,quantityId: quantity, brandId: brand, categoryId: category})
     }else {
         
         // await Product.updateOne({ name, brandId: brand, categoryId: category }, { $inc: { quantity: quantity } });
