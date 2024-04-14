@@ -3,14 +3,13 @@
 NODEJS EXPRESS | MidnightCoders Team
 ------------------------------------------------------- */
 const { mongoose: { Schema, model} } = require('../configs/dbConnection')
-const quantityCalculation = require('../helpers/quantityCalculation')
 /* ------------------------------------------------------- */
 
 const ProductSchema = new Schema({
 
     categoryId:{
         type: Schema.Types.ObjectId,
-        ref: "User",
+        ref: "Category",
         required: true
     },
 

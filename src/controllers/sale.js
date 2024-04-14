@@ -7,7 +7,7 @@ const Sale = require("../models/sale");
 
 module.exports = {
   list: async (req, res) => {
-    const data = await Sale.find();
+    const data = await Sale.find({ isDeleted: false });
 
     res.status(200).send({
       error: false,
@@ -44,7 +44,7 @@ module.exports = {
   },
 
   read: async (req, res) => {
-    const data = await Sale.findOne({ _id: req.params.saleId });
+    const data = await Sale.findOne({ _id: req.params.saleId, isDeleted: false });
 
     res.status(202).send({
       error: false,
@@ -71,11 +71,33 @@ module.exports = {
   },
 
   delete: async (req, res) => {
-    const data = await Sale.deleteOne({ _id: req.params.saleId });
+    // const data = await Sale.deleteOne({ _id: req.params.saleId });
+    
+      const saleId = req.params.saleId;
+      const sale = await Sale.findOne({ _id: saleId });
+  
+      if (!sale) {
+        return res.status(404).send({
+          error: true,
+          message: "Sale product couldn't be found"
+        });
+      }
 
-    res.status(data.deletedCount >= 1 ? 204 : 404).send({
-      error: !!!data.deletedCount,
-      data,
-    });
+      req.body.isDeleted = true
+  
+      await Sale.updateOne({ _id: saleId}, { isDeleted: true })
+  
+      res.status(204).send({
+        error: false,
+        message: "Deleted successfully"
+      })
+    
+      
+    
+
+    // res.status(data.deletedCount >= 1 ? 204 : 404).send({
+    //   error: !(!!data.deletedCount),
+    //   data,
+    // });
   },
 };

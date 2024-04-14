@@ -7,7 +7,7 @@ const Product = require("../models/product")
 
 module.exports = {
   list: async (req, res) => {
-    const data = await Purchase.find();
+    const data = await Purchase.find({ isDeleted: false});
 
     res.status(200).send({
       error: false,
@@ -39,7 +39,7 @@ module.exports = {
   },
 
   read: async (req, res) => {
-    const data = await Purchase.findOne({ _id: req.params.purchaseId });
+    const data = await Purchase.findOne({ _id: req.params.purchaseId, isDeleted: false });
 
     res.status(202).send({
       error: false,
@@ -66,7 +66,21 @@ module.exports = {
   },
 
   delete: async (req, res) => {
-    const data = await Purchase.deleteOne({ _id: req.params.purchaseId });
+
+    const purchaseId = req.params.purchaseId
+
+    const purchase = await Purchase.findOne({ _id: purchaseId })
+
+    if(!purchase) {
+      res.status(404).send({
+        error: true,
+        message: "Required Purchase couldn't be found"
+      })
+    }
+
+    purchase.isDeleted = true
+    
+    const data = await Purchase.updateOne({ _id: req.params.purchaseId }, {isDeleted: true});
 
     res.status(data.deletedCount >= 1 ? 204 : 404).send({
       error: !(!!data.deletedCount),

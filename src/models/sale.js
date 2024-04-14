@@ -38,6 +38,11 @@ const SaleSchema = new Schema({
         type: Number,
         default:function() {return this.price * this.quantity}, 
         transform: function() { return this.price * this.quantity } //! to update the total price
+    },
+
+    isDeleted: {
+        type: Boolean,
+        default: false
     }
 }, {
     collection: "sales",
