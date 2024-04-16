@@ -5,5 +5,6 @@ module.exports = {
         3:"saler",
         4:"purchaser",
         5:"stockman"
+
     }
 }
