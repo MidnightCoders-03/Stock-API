@@ -1,7 +1,10 @@
 "use strict"
 
+const { set } = require('mongoose')
 const { mongoose: {Schema, model} } = require('../configs/dbConnection')
 const { role } = require('../constraints/role&status')
+const {passwordValidation, emailValidation} = require('../helpers/userValidation')
+const { type } = require('os')
 
 //? User Model:
 const UserSchema = new Schema({
@@ -15,14 +18,16 @@ const UserSchema = new Schema({
     password:{
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        set: password => passwordValidation(password)
     },
     email:{
         type: String,
         required: true,
         trim: true,
         unique: true,
-        index: true
+        index: true,
+        set: email => emailValidation(email)
     },
     role:{
         type: Number,
@@ -32,19 +37,18 @@ const UserSchema = new Schema({
             message:"user enter valid role",
             values: Object.keys(role).map(key => Number(key))
         }
+    },
+    isActive:{
+        type: Boolean,
+        default: true
     }
 },{
     collection:'users',
     timestamps: true
 })
 
-//? Password Encryption:
-UserSchema.pre('save', function(next){
-    const user = this
-    if(user.isModified('password')){
-        user.password = require('../helpers/encryption')(user.password)
-    }
-    next()
-}
+module.exports = model('User', UserSchema)
+
+
 
 
