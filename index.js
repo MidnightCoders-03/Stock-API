@@ -21,6 +21,7 @@ require('express-async-errors')
 
 // Connect to DB:
 const { dbConnection } = require('./src/configs/dbConnection')
+const { role } = require('./src/constraints/role&status')
 dbConnection()
 
 /* ------------------------------------------------------- */
@@ -72,4 +73,7 @@ app.listen(PORT, HOST, () => console.log(`http://${HOST}:${PORT}`))
 
 /* ------------------------------------------------------- */
 // Syncronization (must be in commentLine):
-// require('./src/helpers/sync')() // !!! It clears database.
+
+// require('./src/helpers/sync')() // !!! It clear database.
+
+

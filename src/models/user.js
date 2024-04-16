@@ -1,101 +1,56 @@
 "use strict"
-/* -------------------------------------------------------
-NODEJS EXPRESS | MidnightCoders Team
-------------------------------------------------------- */
-const { mongoose:{ Schema, model} } = require('../configs/dbConnection')
-/* ------------------------------------------------------- */
-const passwordValidation = require("../helpers/passwordValidation")
-const emailValidation = require("../helpers/emailValidation")
 
+
+
+const { set } = require('mongoose')
+const { mongoose: {Schema, model} } = require('../configs/dbConnection')
+const { role } = require('../constraints/role&status')
+const {passwordValidation, emailValidation} = require('../helpers/userValidation')
+const { type } = require('os')
+
+//? User Model:
 const UserSchema = new Schema({
-
-    username: {
+    username:{
         type: String,
         required: true,
         unique: true,
+        trim: true,
         index: true
     },
-
-    password: {
+    password:{
         type: String,
         required: true,
-        unique: true,
-        set:(password) => passwordValidation(password) //! password validation and encrypt
-        
+        trim: true,
+        set: password => passwordValidation(password)
     },
-
-    email: {
+    email:{
         type: String,
         required: true,
+        trim: true,
         unique: true,
-       set: (email) => emailValidation(email) //! email validation
+        index: true,
+        set: email => emailValidation(email)
     },
-
-    firstName: {
-        type: String,
-        required: true
+    role:{
+        type: Number,
+        required: true,
+        trim: true,
+        enum: {
+            message:"user enter valid role",
+            values: Object.keys(role).map(key => Number(key))
+        }
     },
-
-    lastName: {
-        type: String,
-        required: true
-    },
-
-    isActive: {
+    isActive:{
         type: Boolean,
         default: true
-    },
-
-    isStaff: {
-        type: Boolean,
-        default: true
-    },
-
-    isAdmin: {
-        type: Boolean,
-        default: false
-    },
-  
-}, {
-    collection: "users",
+    }
+},{
+    collection:'users',
     timestamps: true
 })
 
-module.exports = model("User", UserSchema)
+module.exports = model('User', UserSchema)
 
-// UserSchema.pre(['save', 'updateOne'], function (next) {
 
-//     // get data from "this" when create;
-//     // if process is updateOne, data will receive in "this._update"
-//     const data = this?._update || this
 
-//     // email@domain.com
-//     const isEmailValidated = data.email
-//         ? /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(data.email) // test from "data".
-//         : true
 
-//     if (isEmailValidated) {
-
-//         if (data?.password) {
-
-//             // pass == (min 1: lowerCase, upperCase, Numeric, @$!%*?& + min 8 chars)
-//             const isPasswordValidated = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/.test(data.password)
-
-//             if (isPasswordValidated) {
-
-//                 this.password = data.password = passwordEncrypt(data.password)
-//                 this._update = data // updateOne will wait data from "this._update".
-
-//             } else {
-
-//                 next(new Error('Password not validated.'))
-//             }
-//         }
-
-//         next() // Allow to save.
-
-//     } else {
-
-//         next(new Error('Email not validated.'))
-//     }
-// })
