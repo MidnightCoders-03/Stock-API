@@ -31,8 +31,9 @@ module.exports = async function () {
         "firstName": "admin",
         "lastName": "admin",
         "isActive": true,
-        "isStaff": false,
-        "isAdmin": true
+        "role": "1",
+        
+
     },
     {
         "_id": "65343222b67e9681f937f512",
@@ -42,8 +43,8 @@ module.exports = async function () {
         "firstName": "Staff1",
         "lastName": "Staffz",
         "isActive": true,
-        "isStaff": true,
-        "isAdmin": false
+        "role": "1",
+        
     },
     {
         "_id": "65343222b67e9681f937f513",
@@ -53,8 +54,8 @@ module.exports = async function () {
         "firstName": "Staff2",
         "lastName": "Staffz",
         "isActive": true,
-        "isStaff": true,
-        "isAdmin": false
+        "role": "1",
+        
     },
     {
         "_id": "65343222b67e9681f937f514",
@@ -64,8 +65,8 @@ module.exports = async function () {
         "firstName": "Ali",
         "lastName": "Aliz",
         "isActive": true,
-        "isStaff": false,
-        "isAdmin": false
+        "role": "1",
+        
     },
     {
         "_id": "65343222b67e9681f937f515",
@@ -75,8 +76,8 @@ module.exports = async function () {
         "firstName": "Veli",
         "lastName": "Veliz",
         "isActive": true,
-        "isStaff": false,
-        "isAdmin": false
+        "role": "1",
+        
     },
     {
         "_id": "65343222b67e9681f937f516",
@@ -86,8 +87,8 @@ module.exports = async function () {
         "firstName": "Aydan",
         "lastName": "Aydanz",
         "isActive": true,
-        "isStaff": false,
-        "isAdmin": false
+        "role": "1",
+        
     },
     {
         "_id": "65343222b67e9681f937f517",
@@ -97,8 +98,8 @@ module.exports = async function () {
         "firstName": "Canan",
         "lastName": "Cananz",
         "isActive": true,
-        "isStaff": false,
-        "isAdmin": false
+        "role": "1",
+        
     },
     {
         "_id": "65343222b67e9681f937f518",
@@ -108,8 +109,8 @@ module.exports = async function () {
         "firstName": "Emel",
         "lastName": "Emelz",
         "isActive": true,
-        "isStaff": false,
-        "isAdmin": false
+        "role": "1",
+        
     },
 ])
     await Brand.insertMany(

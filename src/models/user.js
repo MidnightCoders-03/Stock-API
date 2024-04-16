@@ -6,6 +6,7 @@ const { mongoose:{ Schema, model} } = require('../configs/dbConnection')
 /* ------------------------------------------------------- */
 const passwordValidation = require("../helpers/passwordValidation")
 const emailValidation = require("../helpers/emailValidation")
+const { userRoles } = require('../constraints/role&status')
 
 const UserSchema = new Schema({
 
@@ -46,15 +47,26 @@ const UserSchema = new Schema({
         default: true
     },
 
-    isStaff: {
-        type: Boolean,
-        default: true
-    },
+    // isStaff: {
+    //     type: Boolean,
+    //     default: true
+    // },
 
-    isAdmin: {
-        type: Boolean,
-        default: false
-    },
+    // isAdmin: {
+    //     type: Boolean,
+    //     default: false
+    // },  //! role&status'te roleler belirlendiği için yoruma aldık
+
+    role:{
+        type: String,
+        trim: true,
+        required: true,
+        enum: {
+            values: Object.keys(userRoles),
+            message:"Please enter a valid role"
+        }
+
+    }
   
 }, {
     collection: "users",

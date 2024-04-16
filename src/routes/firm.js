@@ -7,6 +7,7 @@ const router = require('express').Router()
 
 const firm = require("../controllers/firm")
 
+
 router.route("/")
 .get(firm.list)
 .post(firm.create)
