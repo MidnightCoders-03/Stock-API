@@ -2,6 +2,8 @@
 
 //* User controller:
 
+//TODO: other actions will be completed
+
 const User = require("../models/user")
 
 module.exports = {
