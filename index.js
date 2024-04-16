@@ -21,6 +21,7 @@ require('express-async-errors')
 
 // Connect to DB:
 const { dbConnection } = require('./src/configs/dbConnection')
+const { role } = require('./src/constraints/role&status')
 dbConnection()
 
 /* ------------------------------------------------------- */
