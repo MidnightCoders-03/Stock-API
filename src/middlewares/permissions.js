@@ -21,16 +21,16 @@ module.exports = {
     },
 
    
-     isAdmin: (req, res, next) => {
+    //  isAdmin: (req, res, next) => {
 
-        const {  userRole } = getUserInfo(req)
+    //     const {  userRole } = getUserInfo(req)
        
-       console.log(userRole);
+    //    console.log(userRole);
 
-       if(userRole == 1) next()
-       else throw new Error("No permission")
+    //    if(userRole == 1) next()
+    //    else throw new Error("No permission")
 
-    },
+    // },
 
     // isSaler: (req, res, next) => {
 
@@ -38,29 +38,35 @@ module.exports = {
     //     if(userRole == 2) next()
     //     else throw new Error("You must be a Saler to do this operation")
     // },
-     //! read => 
-    R_AS: (req, res, next) => {
+     //! read =>  Saler
+    R_S: (req, res, next) => {
        
         
         const { userRole } = getUserInfo(req);
-        if ([1, 2].includes(userRole)) next();
+        if ([2].includes(userRole)) next();
         else
           throw new Error(
             "NoPermission: You must have sufficient role for this operation."
           );
       },
 
-    isPurchaser: (req, res, next) => {
-        const {  userRole } = getUserInfo(req)
-       if(userRole == 3) next()
-       else throw new Error("You must be a Purchaser to do this operation")
-    },
+  //   isPurchaser: (req, res, next) => {
+  //       const {  userRole } = getUserInfo(req)
+  //      if(userRole == 3) next()
+  //      else throw new Error("You must be a Purchaser to do this operation")
+  //   },
 
-   isWarehouseMan: (req, res, next) => {
-    const {  userRole } = getUserInfo(req)
-    if(userRole == 4) next()
-    else throw new Error("You must be a WarehouseMan to do this operation")
-    },
+  //  isWarehouseMan: (req, res, next) => {
+  //   const {  userRole } = getUserInfo(req)
+  //   if(userRole == 4) next()
+  //   else throw new Error("You must be a WarehouseMan to do this operation")
+  //   },
 
+     //! => CREATE, READ, UPDATE, DELETE
+     CRUD_A: (req, res, next) => {
+      const { userRole } = getUserInfo(req)
+      if([1].includes(userRole)) next()
+      throw new Error("You must be Admin")
+     }
 
 }

@@ -48,7 +48,7 @@ module.exports = {
   },
 
   update: async (req, res) => {
-    console.log(req.body.quantity);
+    // console.log(req.body.quantity);
     if(req.body.quantity){
         const oldPurchase = await Purchase.findOne({ _id: req.params.purchaseId })
         console.log(oldPurchase);
