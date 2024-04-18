@@ -7,6 +7,7 @@ const router = require('express').Router()
 
 const token = require("../controllers/token")
 
+
 router.route("/")
 .get(token.list)
 .post(token.create)

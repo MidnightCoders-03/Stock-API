@@ -7,6 +7,10 @@ const router = require('express').Router()
 
 const category = require("../controllers/category")
 
+const { isLogin } = require("../middlewares/permissions")
+
+router.use(isLogin)
+
 router.route("/")
 .get(category.list)
 .post(category.create)

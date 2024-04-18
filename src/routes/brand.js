@@ -7,6 +7,10 @@ const router = require('express').Router()
 
 const brand = require("../controllers/brand")
 
+const { isLogin } = require("../middlewares/permissions")
+
+router.use(isLogin)
+
 router.route("/")
 .get(brand.list)
 .post(brand.create)

@@ -7,6 +7,10 @@ const router = require('express').Router()
 
 const firm = require("../controllers/firm")
 
+const { isLogin } = require("../middlewares/permissions")
+
+router.use(isLogin)
+
 
 router.route("/")
 .get(firm.list)
