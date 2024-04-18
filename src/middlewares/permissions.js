@@ -38,12 +38,31 @@ module.exports = {
     //     if(userRole == 2) next()
     //     else throw new Error("You must be a Saler to do this operation")
     // },
-     //! read =>  Saler
-    R_S: (req, res, next) => {
+
+
+
+
+    
+    
+    
+    //! read => Admin & Saler
+     R_AS: (req, res, next) => {
        
         
         const { userRole } = getUserInfo(req);
         if ([2].includes(userRole)) next();
+        else
+          throw new Error(
+            "NoPermission: You must have sufficient role for this operation."
+          );
+      },
+
+    //! read => Admin & Purchaser
+     R_AP: (req, res, next) => {
+       
+        
+        const { userRole } = getUserInfo(req);
+        if ([3].includes(userRole)) next();
         else
           throw new Error(
             "NoPermission: You must have sufficient role for this operation."
@@ -62,7 +81,8 @@ module.exports = {
   //   else throw new Error("You must be a WarehouseMan to do this operation")
   //   },
 
-     //! => CREATE, READ, UPDATE, DELETE
+  
+  //! => CREATE, READ, UPDATE, DELETE
      CRUD_A: (req, res, next) => {
       const { userRole } = getUserInfo(req)
       if([1].includes(userRole)) next()

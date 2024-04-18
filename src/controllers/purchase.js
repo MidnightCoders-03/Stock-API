@@ -82,6 +82,8 @@ module.exports = {
     
     const data = await Purchase.updateOne({ _id: req.params.purchaseId }, {isDeleted: true});
 
+    await Product.updateOne({ _id: purchase.productId}, { $inc: { quantity: - purchase.quantity}})
+
     res.status(data.deletedCount >= 1 ? 204 : 404).send({
       error: !(!!data.deletedCount),
       data,

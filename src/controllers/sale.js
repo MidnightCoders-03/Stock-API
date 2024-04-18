@@ -86,6 +86,8 @@ module.exports = {
       req.body.isDeleted = true
   
       await Sale.updateOne({ _id: saleId}, { isDeleted: true })
+
+      await Product.updateOne({ _id: sale.productId}, { $inc: { quantity: sale.quantity}})
   
       res.status(204).send({
         error: false,
