@@ -54,7 +54,7 @@ console.log(req.headers);
         const data = await Brand.deleteOne({ _id: req.params.brandId})
 
         res.status(data.deletedCount >= 1 ? 204: 404).send({
-            error: !data.deletedCount,
+            error: !(!!data.deletedCount),
             data
         })
     }

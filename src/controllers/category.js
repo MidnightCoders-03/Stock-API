@@ -54,7 +54,7 @@ module.exports = {
         const data = await Category.deleteOne({ _id: req.params.categoryId})
 
         res.status(data.deletedCount >= 1 ? 204: 404).send({
-            error: !data.deletedCount,
+            error: !(!!data.deletedCount),
             data
         })
     }

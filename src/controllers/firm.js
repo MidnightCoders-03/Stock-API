@@ -53,7 +53,7 @@ module.exports = {
         const data = await Firm.deleteOne({ _id: req.params.firmId})
 
         res.status(data.deletedCount >= 1 ? 204 : 404).send({
-            error: !data.deletedCount,
+            error: !(!!data.deletedCount),
             data
         })
     },
