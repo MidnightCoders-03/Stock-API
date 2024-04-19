@@ -105,6 +105,17 @@ module.exports = {
           );
       },
 
+    //! read => Admin & Saler & Purchaser & WarehouseMan
+     R_ASPW: (req, res, next) => {
+       
+        const { userRole } = getUserInfo(req);
+        if ([1, 2, 3, 4].includes(userRole)) next();
+        else
+          throw new Error(
+            "NoPermission: You must have sufficient role for this operation."
+          );
+      },
+
 
    //! read => Admin & WarehouseMan   
   R_AW: (req, res, next) => {

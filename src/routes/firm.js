@@ -7,9 +7,9 @@ const router = require('express').Router()
 
 const firm = require("../controllers/firm")
 
-const { isLogin } = require("../middlewares/permissions")
+const { isLogin, CRUD_A } = require("../middlewares/permissions")
 
-router.use(isLogin)
+router.use(isLogin, CRUD_A)
 
 
 router.route("/")
