@@ -1,6 +1,6 @@
 "use strict"
 /* -------------------------------------------------------
-    NODEJS EXPRESS | CLARUSWAY FullStack Team
+    NODEJS EXPRESS | Midnight Coders Team
 ------------------------------------------------------- */
 // node i nodemailer
 // sendMail(to:string, subject:string, message:string):
@@ -10,7 +10,7 @@ const nodemailer = require('nodemailer')
 module.exports = function (to, subject, message) {
 
     // Set Passive:
-    return true
+    // return true
 
     //? GoogleMail (gmail):
     // Google -> AccountHome -> Security -> Two-Step-Verify -> App-Passwords

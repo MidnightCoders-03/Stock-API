@@ -1,10 +1,15 @@
 "use strict"
+/* -------------------------------------------------------
+    NODEJS EXPRESS | Midnight Coders Team
+------------------------------------------------------- */
 
 const router = require('express').Router()
 
-const user = require('../controllers/user')
+const user = require("../controllers/user")
+const { isLogin, CRUD_A } = require("../middlewares/permissions")
 
-//* User router:
+router.use(isLogin)
+
 
 router.route('/')
 .get(user.list)
@@ -14,6 +19,6 @@ router.route('/:userId')
 .get(user.read)
 .put(user.update)
 .patch(user.update)
-.delete(user.delete)
+.delete(CRUD_A, user.delete)
 
 module.exports = router
