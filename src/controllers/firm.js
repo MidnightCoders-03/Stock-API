@@ -1,5 +1,6 @@
 "use strict"
 /* -------------------------------------------------------
+
 NODEJS EXPRESS | MidnightCoders Team
 ------------------------------------------------------- */
 const Firm = require("../models/firm")
@@ -58,3 +59,4 @@ module.exports = {
         })
     },
 }
+

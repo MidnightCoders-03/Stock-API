@@ -2,19 +2,20 @@
 /* -------------------------------------------------------
     NODEJS EXPRESS | Midnight Coders Team
 ------------------------------------------------------- */
+
 const router = require('express').Router()
-/* ------------------------------------------------------- */
 
 const user = require("../controllers/user")
 const { isLogin, CRUD_A } = require("../middlewares/permissions")
 
 router.use(isLogin)
 
-router.route("/")
+
+router.route('/')
 .get(user.list)
 .post(user.create)
 
-router.route("/:userId")
+router.route('/:userId')
 .get(user.read)
 .put(user.update)
 .patch(user.update)

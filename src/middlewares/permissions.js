@@ -15,13 +15,29 @@ module.exports = {
 
     isLogin: (req, res, next) => {
 
+
      const { user, isActive } = getUserInfo(req)
      if(user && isActive) next()
      else throw new Error("You must log in to continue")
+        // Set Passive:
+        return next()
+
+        // any User:
+        if (req.user && req.user.isActive) {
+
+            next()
+
+        } else {
+
+            res.errorStatusCode = 403
+            throw new Error('NoPermission: You must login.')
+        }
     },
 
 
+
   //! CREATE
+
 
   // ! create => Admin & Saler
   C_AS: (req, res, next) => {
@@ -67,6 +83,8 @@ module.exports = {
 //         "NoPermission: You must have sufficient role for this operation."
 //       );
 //   },
+        // only Admin or Staff:
+        if (req.user && req.user.isActive && (req.user.isAdmin || req.user.isStaff)) {
 
 
 

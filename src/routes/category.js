@@ -22,3 +22,4 @@ router.route("/:categoryId")
 .delete(CRUD_A, category.delete)
 
 module.exports = router
+

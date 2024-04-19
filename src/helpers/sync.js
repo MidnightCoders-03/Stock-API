@@ -145,10 +145,38 @@ module.exports = async function () {
                 "name": "Xiaomi",
                 "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Xiaomi_logo.svg/1200px-Xiaomi_logo.svg.png"
             },
+=======
+        "isStaff": true,
+        "isAdmin": true
+    })
+    await User.create({
+        "_id": "65343222b67e9681f937f002",
+        "username": "staff",
+        "password": "aA?123456",
+        "email": "staff@site.com",
+        "firstName": "staff",
+        "lastName": "staff",
+        "isActive": true,
+        "isStaff": true,
+        "isAdmin": false
+    })
+    await User.create({
+        "_id": "65343222b67e9681f937f003",
+        "username": "test",
+        "password": "aA?123456",
+        "email": "test@site.com",
+        "firstName": "test",
+        "lastName": "test",
+        "isActive": true,
+        "isStaff": false,
+        "isAdmin": false
+    })
+
 
 
         ]
     )
+
 
 
     await Firm.insertMany([
@@ -382,6 +410,131 @@ module.exports = async function () {
 
 
     console.log('- Database and all data SYNCED!')
+
+=======
+    /* Product *
+    const Product = require('../models/product')
+    await Product.deleteMany() // !!! Clear collection.
+    await Product.create({
+        "_id": "65343222b67e9681f937f421",
+        "name": "Tommy",
+        "categoryId": "65343222b67e9681f937f203",
+        "brandId": "65343222b67e9681f937f107",
+        "stock": 0
+    })
+    await Product.create({
+        "_id": "65343222b67e9681f937f422",
+        "name": "Link",
+        "categoryId": "65343222b67e9681f937f202",
+        "brandId": "65343222b67e9681f937f123",
+        "stock": 910
+    })
+    await Product.create({
+        "_id": "65343222b67e9681f937f423",
+        "name": "Cola Turka",
+        "categoryId": "65343222b67e9681f937f202",
+        "brandId": "65343222b67e9681f937f123",
+        "stock": 750
+    })
+    await Product.create({
+        "_id": "65343222b67e9681f937f426",
+        "name": "Rondo",
+        "categoryId": "65343222b67e9681f937f201",
+        "brandId": "65343222b67e9681f937f123",
+        "stock": 900
+    })
+    await Product.create({
+        "_id": "65343222b67e9681f937f427",
+        "name": "Iphone 14 Pro",
+        "categoryId": "65343222b67e9681f937f204",
+        "brandId": "65343222b67e9681f937f131",
+        "stock": 0
+    })
+
+    /* Purchase *
+    const Purchase = require('../models/purchase')
+    await Purchase.deleteMany() // !!! Clear collection.
+    await Purchase.create({
+        "_id": "65343222b67e9681f937f513",
+        "user_id": "65343222b67e9681f937f001",
+        "firm_id": "65343222b67e9681f937f304",
+        "brandId": "65343222b67e9681f937f123",
+        "product_id": "65343222b67e9681f937f422",
+        "quantity": 1000,
+        "price": 20
+    })
+    await Purchase.create({
+        "_id": "65343222b67e9681f937f514",
+        "user_id": "65343222b67e9681f937f001",
+        "firm_id": "65343222b67e9681f937f304",
+        "brandId": "65343222b67e9681f937f123",
+        "product_id": "65343222b67e9681f937f423",
+        "quantity": 1000,
+        "price": 30
+    })
+    await Purchase.create({
+        "_id": "65343222b67e9681f937f516",
+        "user_id": "65343222b67e9681f937f001",
+        "firm_id": "65343222b67e9681f937f304",
+        "brandId": "65343222b67e9681f937f123",
+        "product_id": "65343222b67e9681f937f426",
+        "quantity": 1000,
+        "price": 5
+    })
+    await Purchase.create({
+        "_id": "65343222b67e9681f937f519",
+        "user_id": "65343222b67e9681f937f002",
+        "firm_id": "65343222b67e9681f937f333",
+        "brandId": "65343222b67e9681f937f104",
+        "product_id": "65343222b67e9681f937f422",
+        "quantity": 10,
+        "price": 100
+    })
+    await Purchase.create({
+        "_id": "65343222b67e9681f937f520",
+        "user_id": "65343222b67e9681f937f001",
+        "firm_id": "65343222b67e9681f937f305",
+        "brandId": "65343222b67e9681f937f131",
+        "product_id": "65343222b67e9681f937f427",
+        "quantity": 10,
+        "price": 2500
+    })
+
+    /* Sale *
+    const Sale = require('../models/sale')
+    await Sale.deleteMany() // !!! Clear collection.
+    await Sale.create({
+        "_id": "65343222b67e9681f937f614",
+        "user_id": "65343222b67e9681f937f001",
+        "brandId": "65343222b67e9681f937f123",
+        "product_id": "65343222b67e9681f937f422",
+        "quantity": 100,
+        "price": 30
+    })
+    await Sale.create({
+        "_id": "65343222b67e9681f937f615",
+        "user_id": "65343222b67e9681f937f001",
+        "brandId": "65343222b67e9681f937f123",
+        "product_id": "65343222b67e9681f937f423",
+        "quantity": 250,
+        "price": 40
+    })
+    await Sale.create({
+        "_id": "65343222b67e9681f937f617",
+        "user_id": "65343222b67e9681f937f001",
+        "brandId": "65343222b67e9681f937f123",
+        "product_id": "65343222b67e9681f937f426",
+        "quantity": 100,
+        "price": 6
+    })
+    await Sale.create({
+        "_id": "65343222b67e9681f937f624",
+        "user_id": "65343222b67e9681f937f001",
+        "brandId": "65343222b67e9681f937f131",
+        "product_id": "65343222b67e9681f937f427",
+        "quantity": 10,
+        "price": 3500
+     })
 
 
 }

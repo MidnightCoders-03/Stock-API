@@ -22,3 +22,4 @@ router.route("/:brandId")
 .delete(CRUD_A, brand.delete)
 
 module.exports = router
+
