@@ -84,7 +84,7 @@ module.exports = {
 //       );
 //   },
         // only Admin or Staff:
-        if (req.user && req.user.isActive && (req.user.isAdmin || req.user.isStaff)) {
+        // if (req.user && req.user.isActive && (req.user.isAdmin || req.user.isStaff)) {
 
 
 
@@ -191,6 +191,7 @@ module.exports = {
      }
 
 }
+
 
 
 
