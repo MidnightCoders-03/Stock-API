@@ -6,18 +6,18 @@ const router = require('express').Router()
 /* ------------------------------------------------------- */
 
 const product = require("../controllers/product")
-const {  isLogin, CRUD_A, R_ASPW } = require("../middlewares/permissions")
+const {  isLogin, CP_AP, RP_ASPW, UP_AP, D_A } = require("../middlewares/permissions")
 
 router.use(isLogin)
 
 router.route("/")
-.get(R_ASPW, product.list)
-.post(CRUD_A, product.create)
+.get(RP_ASPW, product.list)
+.post(CP_AP, product.create)
 
 router.route("/:productId")
-.get(R_ASPW, product.read)
-.put(CRUD_A, product.update)
-.patch(CRUD_A, product.update)
-.delete(CRUD_A, product.delete)
+.get(RP_ASPW, product.read)
+.put(UP_AP, product.update)
+.patch(UP_AP, product.update)
+.delete(D_A, product.delete)
 
 module.exports = router

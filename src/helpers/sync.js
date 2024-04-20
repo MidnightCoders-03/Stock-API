@@ -43,7 +43,7 @@ module.exports = async function () {
         "firstName": "Staff1",
         "lastName": "Staffz",
         "isActive": true,
-        "role": "1",
+        "role": "2",
         
     },
     {
@@ -54,7 +54,7 @@ module.exports = async function () {
         "firstName": "Staff2",
         "lastName": "Staffz",
         "isActive": true,
-        "role": "1",
+        "role": "3",
         
     },
     {
@@ -65,7 +65,7 @@ module.exports = async function () {
         "firstName": "Ali",
         "lastName": "Aliz",
         "isActive": true,
-        "role": "1",
+        "role": "4",
         
     },
     {
@@ -76,7 +76,7 @@ module.exports = async function () {
         "firstName": "Veli",
         "lastName": "Veliz",
         "isActive": true,
-        "role": "1",
+        "role": "2",
         
     },
     {
@@ -87,7 +87,7 @@ module.exports = async function () {
         "firstName": "Aydan",
         "lastName": "Aydanz",
         "isActive": true,
-        "role": "1",
+        "role": "2",
         
     },
     {
@@ -98,7 +98,7 @@ module.exports = async function () {
         "firstName": "Canan",
         "lastName": "Cananz",
         "isActive": true,
-        "role": "1",
+        "role": "3",
         
     },
     {
@@ -109,7 +109,7 @@ module.exports = async function () {
         "firstName": "Emel",
         "lastName": "Emelz",
         "isActive": true,
-        "role": "1",
+        "role": "4",
         
     },
 ])

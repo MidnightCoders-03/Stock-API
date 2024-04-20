@@ -6,7 +6,7 @@ const router = require('express').Router()
 /* ------------------------------------------------------- */
 
 const user = require("../controllers/user")
-const { isLogin, CRUD_A } = require("../middlewares/permissions")
+const { isLogin, D_A } = require("../middlewares/permissions")
 
 router.use(isLogin)
 
@@ -18,6 +18,6 @@ router.route("/:userId")
 .get(user.read)
 .put(user.update)
 .patch(user.update)
-.delete(CRUD_A, user.delete)
+.delete(D_A, user.delete)
 
 module.exports = router

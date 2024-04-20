@@ -58,11 +58,10 @@ const UserSchema = new Schema({
     // },  //! role&status'te roleler belirlendiği için yoruma aldık
 
     role:{
-        type: String,
-        trim: true,
+        type: Number,
         required: true,
         enum: {
-            values: Object.keys(userRoles),
+            values: Object.keys(userRoles).map(key => Number(key)),
             message:"Please enter a valid role"
         }
 

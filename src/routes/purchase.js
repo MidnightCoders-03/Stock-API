@@ -7,21 +7,21 @@ const router = require('express').Router()
 
 const purchase = require("../controllers/purchase")
 
-const { isLogin, CRUD_A, C_AP, R_AP, U_AP } = require("../middlewares/permissions")
+const { isLogin, UPU_AP, D_A, RPU_ASP, CPU_ASP } = require("../middlewares/permissions")
 
 router.use(isLogin)
 
 router.route("/")
-    .get(R_AP, purchase.list)
-    .post(C_AP, purchase.create)
+    .get(RPU_ASP, purchase.list)
+    .post(CPU_ASP, purchase.create)
 
 // router.route("/restore/:purchaseId")
 // .get(CRUD_A, purchase.restore)
 
 router.route("/:purchaseId")
-    .get(R_AP, purchase.read)
-    .put(U_AP, purchase.update)
-    .patch(U_AP, purchase.update)
-    .delete(CRUD_A, purchase.delete)
+    .get(RPU_ASP, purchase.read)
+    .put(UPU_AP, purchase.update)
+    .patch(UPU_AP, purchase.update)
+    .delete(D_A, purchase.delete)
 
 module.exports = router

@@ -8,8 +8,14 @@ const User = require("../models/user");
 module.exports = {
   list: async (req, res) => {
     // console.log(Object.keys(firmStatus));
-
-    const data = await User.find();
+  
+  const roleStatus = req.user.role
+  // roleStatus == 1 ? {} : {role: roleStatus}
+  console.log(roleStatus);
+  
+  // const customFilters = req.user?.role == 1 ? {} : { _id: req.user._id }
+    // const data = await User.find(customFilters);
+    const data = await User.find(role);
 
     res.status(200).send({
       error: false,

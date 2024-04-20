@@ -13,3 +13,5 @@ router.route("/")
 .post(token.create)
 
 router.route("/:tokenId")
+
+module.exports = router

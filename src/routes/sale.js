@@ -6,18 +6,18 @@ const router = require('express').Router()
 /* ------------------------------------------------------- */
 
 const sale = require("../controllers/sale")
-const { isLogin, R_AS, CRUD_A, C_AS, U_AS } = require('../middlewares/permissions')
+const { isLogin, CS_AS, RS_AS, D_A, US_AS } = require('../middlewares/permissions')
 
 router.use(isLogin)
 
 router.route("/")
-.get( R_AS,sale.list)
-.post(C_AS, sale.create)
+.get( RS_AS,sale.list)
+.post(CS_AS, sale.create)
 
 router.route("/:saleId")
-.get( R_AS,sale.read)
-.put(U_AS, sale.update)
-.patch(U_AS, sale.update)
-.delete(CRUD_A, sale.delete)
+.get( RS_AS,sale.read)
+.put(US_AS, sale.update)
+.patch(US_AS, sale.update)
+.delete(D_A, sale.delete)
 
 module.exports = router

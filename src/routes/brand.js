@@ -7,18 +7,18 @@ const router = require('express').Router()
 
 const brand = require("../controllers/brand")
 
-const { isLogin, C_ASP, CRUD_A, R_ASPW } = require("../middlewares/permissions")
+const { isLogin, CB_AP, RB_ASPW, UB_AP, D_A  } = require("../middlewares/permissions")
 
 router.use(isLogin)
 
 router.route("/")
-.get(R_ASPW, brand.list)
-.post(CRUD_A, brand.create)
+.get(RB_ASPW, brand.list)
+.post(CB_AP, brand.create)
 
 router.route("/:brandId")
-.get(R_ASPW, brand.read)
-.put(CRUD_A, brand.update)
-.patch(CRUD_A, brand.update)
-.delete(CRUD_A, brand.delete)
+.get(RB_ASPW, brand.read)
+.put(UB_AP, brand.update)
+.patch(UB_AP, brand.update)
+.delete(D_A, brand.delete)
 
 module.exports = router

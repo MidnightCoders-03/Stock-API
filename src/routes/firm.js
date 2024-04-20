@@ -7,19 +7,19 @@ const router = require('express').Router()
 
 const firm = require("../controllers/firm")
 
-const { isLogin, CRUD_A } = require("../middlewares/permissions")
+const { isLogin, D_A, CF_ASP, UF_ASP, RF_ASPW } = require("../middlewares/permissions")
 
-router.use(isLogin, CRUD_A)
+router.use(isLogin)
 
 
 router.route("/")
-.get(firm.list)
-.post(firm.create)
+.get(RF_ASPW, firm.list)
+.post(CF_ASP, firm.create)
 
 router.route("/:firmId")
-.get(firm.read)
-.put(firm.update)
-.patch(firm.update)
-.delete(firm.delete)
+.get(RF_ASPW, firm.read)
+.put(UF_ASP, firm.update)
+.patch(UF_ASP, firm.update)
+.delete(D_A, firm.delete)
 
 module.exports = router
