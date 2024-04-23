@@ -8,7 +8,7 @@ const router = require('express').Router()
 const user = require("../controllers/user")
 const { isLogin, D_A } = require("../middlewares/permissions")
 
-router.use(isLogin)
+// router.use(isLogin)
 
 router.route("/")
 .get(user.list)

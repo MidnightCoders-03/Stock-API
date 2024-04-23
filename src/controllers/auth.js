@@ -27,8 +27,13 @@ module.exports = {
         }
 
         if(!user.isActive ){
-            re.errorStatusCode = 403
+            res.errorStatusCode = 403
             throw new Error("Sorry you are unauthorized to log in")
+        }
+
+        if(user.isDeleted ){
+            res.errorStatusCode = 403
+            throw new Error("Sorry there is no user in the given info ")
         }
 
         let tokenData = await Token.findOne({ userId: user._id})

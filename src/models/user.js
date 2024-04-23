@@ -63,8 +63,13 @@ const UserSchema = new Schema({
         enum: {
             values: Object.keys(userRoles).map(key => Number(key)),
             message:"Please enter a valid role"
-        }
+        },
 
+    },
+
+    isDeleted: {
+        type: Boolean,
+        default: false
     }
   
 }, {

@@ -21,7 +21,7 @@ module.exports = async function () {
     const Product = require('../models/product')
     const Purchase = require('../models/purchase')
 
-    await User.insertMany(
+    await User.create(
         [{
         
         "_id": "65343222b67e9681f937f511",
@@ -32,6 +32,7 @@ module.exports = async function () {
         "lastName": "admin",
         "isActive": true,
         "role": "1",
+        "isDeleted": false
         
 
     },
@@ -44,6 +45,7 @@ module.exports = async function () {
         "lastName": "Staffz",
         "isActive": true,
         "role": "2",
+        "isDeleted": false
         
     },
     {
@@ -55,6 +57,7 @@ module.exports = async function () {
         "lastName": "Staffz",
         "isActive": true,
         "role": "3",
+        "isDeleted": false
         
     },
     {
@@ -66,6 +69,7 @@ module.exports = async function () {
         "lastName": "Aliz",
         "isActive": true,
         "role": "4",
+        "isDeleted": false
         
     },
     {
@@ -77,6 +81,7 @@ module.exports = async function () {
         "lastName": "Veliz",
         "isActive": true,
         "role": "2",
+        "isDeleted": false
         
     },
     {
@@ -88,6 +93,7 @@ module.exports = async function () {
         "lastName": "Aydanz",
         "isActive": true,
         "role": "2",
+        "isDeleted": false
         
     },
     {
@@ -99,6 +105,7 @@ module.exports = async function () {
         "lastName": "Cananz",
         "isActive": true,
         "role": "3",
+        "isDeleted": false
         
     },
     {
@@ -110,6 +117,7 @@ module.exports = async function () {
         "lastName": "Emelz",
         "isActive": true,
         "role": "4",
+        "isDeleted": false
         
     },
 ])
